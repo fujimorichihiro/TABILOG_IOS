@@ -8,23 +8,20 @@
 import SwiftUI
 import CoreLocation
 import MapKit
+
 struct MyLocationView: View {
-    //マップに立てるピン：緯度経度と、記事情報を持たせる
-    struct PinItem: Identifiable {
-        let id = UUID()
-        let coordinate: CLLocationCoordinate2D
-        let article: Article
-    }
+    
     
     @State private var region = MKCoordinateRegion(
         center: CLLocationCoordinate2D(latitude: 0, longitude: 0),
             span: MKCoordinateSpan(latitudeDelta: 0.005, longitudeDelta: 0.005)
     )
-    //ピンを入れるからの配列を作成
+    @State private var trackingMode: MapUserTrackingMode = .follow
+    //ピンを入れる空の配列を作成
     @State private var points = [PinItem]()
     //現在地周辺の記事の探索結果を入れる配列
     @State private var surroundingArticles = [Article]()
-    //タップされたピンの記事
+    //タップされたピンに紐づいた記事を入れる
     @State private var selectedArticle = Article()
     //タップされているかのフラグ
     @State private var flag = false
@@ -36,20 +33,21 @@ struct MyLocationView: View {
             Map(
                 coordinateRegion: $region,
                 showsUserLocation: true,
-                annotationItems: points,
-                annotationContent: { item in
+                userTrackingMode: $trackingMode,
+                annotationItems: points, //ピンの配列を渡す
+                annotationContent: { item in //ピンの形などを指定する
                     MapAnnotation(coordinate: item.coordinate){
                         Image(systemName: "mappin.circle.fill")
                             .foregroundColor(.red)
                             .font(.title)
-                            .onTapGesture{
+                            .onTapGesture{ //ピンをタップして時の動作
                                 selectedArticle = item.article
                                 self.flag = false
                                 withAnimation() { self.flag.toggle() }
                             }
                     }
                 }
-            ).onAppear(perform: updateViewMap)
+            ).onAppear(perform: updateViewMap) //下に記述、位置情報などを取得更新する。
             VStack() {
                 Spacer()
                 if flag {
@@ -61,12 +59,13 @@ struct MyLocationView: View {
                             Spacer()
                                 .frame(width: 30)
                             Text(selectedArticle.title ?? "")
-                                .foregroundColor(.black)
+                                .foregroundColor(.black) //文字色
                             Spacer()
                                 .frame(width: 30)
                         }
-                        .background(Color.white)
-                        .cornerRadius(16)
+                        .background(Color.white) //背景色
+                        .cornerRadius(16) //角丸
+                        .shadow(color: .gray, radius: 10, y: 10) //影
                         
                     }.transition(.slide)
                     
@@ -77,13 +76,11 @@ struct MyLocationView: View {
         }
     }
     
-    func updateViewMap() { //上から順に処理されるわけではないっぽい？
+    func updateViewMap() {//上から順に処理されるわけではないっぽい？
         // 現在地を取得
         coordinator.getLocation()
-        //JSONデータを取得するurlを作成
-        let searchByCurrentLocation = "https://tabilog.cyou/api/v1/search/by_current_location?latitude=\(coordinator.myLatitude!)&longitude=\(coordinator.myLongitude!)"
         //JSONデータを取得,surroundingArticlesを更新する。
-        loadData(request_url: searchByCurrentLocation)
+        loadData(request_url: "https://tabilog.cyou/api/v1/search/by_current_location?latitude=\(coordinator.myLatitude!)&longitude=\(coordinator.myLongitude!)")
         //ピンを生成する。
         for article in surroundingArticles {
             points.append(PinItem(coordinate: .init(latitude: article.latitude!, longitude: article.longitude!), article: article))
@@ -94,6 +91,7 @@ struct MyLocationView: View {
         
     }
     
+    //記事情報を取得する関数
     func loadData(request_url: String) {
         guard let url = URL(string: request_url) else {
             return

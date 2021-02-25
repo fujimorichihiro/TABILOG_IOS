@@ -9,7 +9,7 @@ import SwiftUI
 import MapKit
 
 struct ArticleDetailView: View {
-    //タップされた記事idを取得
+    //タップされた記事を取得する
     let articleDetail: Article
     
     @State private var region = MKCoordinateRegion(
@@ -24,18 +24,37 @@ struct ArticleDetailView: View {
                 Spacer()
                     .frame(width: 10)
                 Text(articleDetail.title ?? "")
-                    .font(.title2)
+                    .font(.title)
+                    .bold()
+                    
                 Spacer()
             }
-            Divider() //下線
+            Rectangle()//下線
+                .frame(height: 4)
+                .foregroundColor(.gray)
+            HStack() {
+                Spacer()
+                    .frame(width: 10)
+                URLImageView(viewModel: .init(url: "\(articleDetail.user?.profile_image.thumb_25.url ?? "")"))
+                    .scaledToFill()
+                    .frame(width:40, height: 40)
+                    .cornerRadius(30)
+                Spacer()
+                    .frame(width: 10)
+                Text(articleDetail.user?.name ?? "")
+                    .font(.system(size: 10))
+                    .offset(y: -10)
+                Spacer()
+            }
         }
         HStack {
             Spacer()
-                .frame(width: 10)
+                .frame(width: 30)
             HTMLStringView(htmlContent: articleDetail.body ?? "")
         }
         Map(coordinateRegion: $region).onAppear(perform: updateMap)
     }
+    //マップに記事の位置情報を表示
     func updateMap() {
         region.center = CLLocationCoordinate2D(latitude: articleDetail.latitude!, longitude: articleDetail.longitude!)
     }

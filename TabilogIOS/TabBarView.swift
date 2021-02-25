@@ -22,7 +22,7 @@ struct TabBarView: View {
                 Image(systemName: "house")
                     .font(.title)
             }
-            Text("検索画面") //検索画面
+            SearchArticleView() //検索画面
                 .tabItem {
                     Image(systemName: "magnifyingglass")
                         .font(.title)

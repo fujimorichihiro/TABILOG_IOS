@@ -18,6 +18,7 @@
 		1F74E8B525E8122B0035DADE /* URLImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F74E8B425E8122B0035DADE /* URLImageView.swift */; };
 		1F74E8B825E813240035DADE /* HTMLStringView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F74E8B725E813240035DADE /* HTMLStringView.swift */; };
 		1F74E8BB25E82AFF0035DADE /* NewArticlesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F74E8BA25E82AFF0035DADE /* NewArticlesView.swift */; };
+		1F74E8BE25E84D860035DADE /* SearchArticleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F74E8BD25E84D860035DADE /* SearchArticleView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +35,7 @@
 		1F74E8B425E8122B0035DADE /* URLImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLImageView.swift; sourceTree = "<group>"; };
 		1F74E8B725E813240035DADE /* HTMLStringView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTMLStringView.swift; sourceTree = "<group>"; };
 		1F74E8BA25E82AFF0035DADE /* NewArticlesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewArticlesView.swift; sourceTree = "<group>"; };
+		1F74E8BD25E84D860035DADE /* SearchArticleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchArticleView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,6 +80,7 @@
 				1F74E8B425E8122B0035DADE /* URLImageView.swift */,
 				1F74E8B725E813240035DADE /* HTMLStringView.swift */,
 				1F74E8BA25E82AFF0035DADE /* NewArticlesView.swift */,
+				1F74E8BD25E84D860035DADE /* SearchArticleView.swift */,
 			);
 			path = TabilogIOS;
 			sourceTree = "<group>";
@@ -166,6 +169,7 @@
 				1F74E89725E76F9A0035DADE /* ContentView.swift in Sources */,
 				1F74E8AB25E7E52A0035DADE /* MyLocationView.swift in Sources */,
 				1F74E8A525E775000035DADE /* TabBarView.swift in Sources */,
+				1F74E8BE25E84D860035DADE /* SearchArticleView.swift in Sources */,
 				1F74E8B825E813240035DADE /* HTMLStringView.swift in Sources */,
 				1F74E89525E76F9A0035DADE /* TabilogIOSApp.swift in Sources */,
 			);
