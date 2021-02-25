@@ -8,7 +8,7 @@
 import SwiftUI
 import CoreLocation
 import MapKit
-struct myLocationTest: View {
+struct MyLocationView: View {
     //マップに立てるピン：緯度経度と、記事情報を持たせる
     struct PinItem: Identifiable {
         let id = UUID()
@@ -26,44 +26,57 @@ struct myLocationTest: View {
     @State private var surroundingArticles = [Article]()
     //タップされたピンの記事
     @State private var selectedArticle = Article()
+    //タップされているかのフラグ
+    @State private var flag = false
     let coordinator = Coordinator()
     var body: some View {
         
         //Map表示部分
-        VStack {
-            NavigationLink(destination: ArticleDetailView(articleDetail: selectedArticle)) {
-                HStack() {
-                    Spacer()
-                        .frame(width: 20)
-                    URLImageView(viewModel: .init(url: "\(selectedArticle.article_image?.thumb.url ?? "")"))
-                        .scaledToFill()
-                        .frame(width: 100, height: 100)
-                    Spacer()
-                        .frame(width: 50)
-                    Text(selectedArticle.title ?? "")
+        ZStack {
+            Map(
+                coordinateRegion: $region,
+                showsUserLocation: true,
+                annotationItems: points,
+                annotationContent: { item in
+                    MapAnnotation(coordinate: item.coordinate){
+    //                    NavigationLink(destination: ArticleView(articleDetail: item.article)) {
+                        Image(systemName: "mappin.circle.fill")
+                            .foregroundColor(.red)
+                            .font(.title)
+                            .onTapGesture{
+                                selectedArticle = item.article
+                                self.flag = false
+                                withAnimation() { self.flag.toggle() }
+                            }
+    //                    }
+                    }
                 }
-            }
-        }
-        Map(
-            coordinateRegion: $region,
-            showsUserLocation: true,
-            annotationItems: points,
-            annotationContent: { item in
-                MapAnnotation(coordinate: item.coordinate){
-//                    NavigationLink(destination: ArticleView(articleDetail: item.article)) {
+            ).onAppear(perform: updateViewMap)
+            VStack() {
+                Spacer()
+                if flag {
+                    NavigationLink(destination: ArticleDetailView(articleDetail: selectedArticle)) {
                         HStack() {
-                            URLImageView(viewModel: .init(url: "\(item.article.article_image?.thumb.url ?? "")"))
+                            URLImageView(viewModel: .init(url: "\(selectedArticle.article_image?.thumb.url ?? "")"))
                                 .scaledToFill()
                                 .frame(width: 100, height: 100)
+                            Spacer()
+                                .frame(width: 30)
+                            Text(selectedArticle.title ?? "")
+                                .foregroundColor(.black)
+                            Spacer()
+                                .frame(width: 30)
                         }
-                        .onTapGesture{
-                            selectedArticle = item.article
-                        }
-//                    }
+                        .background(Color.white)
+                        .cornerRadius(16)
+                        
+                    }.transition(.slide)
+                    
                 }
+                Spacer()
+                    .frame(height: 20)
             }
-        ).onAppear(perform: updateViewMap)
-        
+        }
     }
     
     func updateViewMap() {
