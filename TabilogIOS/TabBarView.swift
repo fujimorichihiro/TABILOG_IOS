@@ -27,7 +27,7 @@ struct TabBarView: View {
                     Image(systemName: "magnifyingglass")
                         .font(.title)
                 }
-            Text("現在地付近記事検索")
+            MyLocationView()
                 .tabItem {
                     Image(systemName: "map")
                         .font(.title)

@@ -12,6 +12,8 @@
 		1F74E89925E76F9B0035DADE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1F74E89825E76F9B0035DADE /* Assets.xcassets */; };
 		1F74E89C25E76F9B0035DADE /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1F74E89B25E76F9B0035DADE /* Preview Assets.xcassets */; };
 		1F74E8A525E775000035DADE /* TabBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F74E8A425E775000035DADE /* TabBarView.swift */; };
+		1F74E8AB25E7E52A0035DADE /* MyLocationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F74E8AA25E7E52A0035DADE /* MyLocationView.swift */; };
+		1F74E8AE25E7E6880035DADE /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F74E8AD25E7E6880035DADE /* Model.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +24,8 @@
 		1F74E89B25E76F9B0035DADE /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		1F74E89D25E76F9B0035DADE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1F74E8A425E775000035DADE /* TabBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarView.swift; sourceTree = "<group>"; };
+		1F74E8AA25E7E52A0035DADE /* MyLocationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyLocationView.swift; sourceTree = "<group>"; };
+		1F74E8AD25E7E6880035DADE /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,6 +64,8 @@
 				1F74E89D25E76F9B0035DADE /* Info.plist */,
 				1F74E89A25E76F9B0035DADE /* Preview Content */,
 				1F74E8A425E775000035DADE /* TabBarView.swift */,
+				1F74E8AA25E7E52A0035DADE /* MyLocationView.swift */,
+				1F74E8AD25E7E6880035DADE /* Model.swift */,
 			);
 			path = TabilogIOS;
 			sourceTree = "<group>";
@@ -141,7 +147,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1F74E8AE25E7E6880035DADE /* Model.swift in Sources */,
 				1F74E89725E76F9A0035DADE /* ContentView.swift in Sources */,
+				1F74E8AB25E7E52A0035DADE /* MyLocationView.swift in Sources */,
 				1F74E8A525E775000035DADE /* TabBarView.swift in Sources */,
 				1F74E89525E76F9A0035DADE /* TabilogIOSApp.swift in Sources */,
 			);
