@@ -14,6 +14,9 @@
 		1F74E8A525E775000035DADE /* TabBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F74E8A425E775000035DADE /* TabBarView.swift */; };
 		1F74E8AB25E7E52A0035DADE /* MyLocationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F74E8AA25E7E52A0035DADE /* MyLocationView.swift */; };
 		1F74E8AE25E7E6880035DADE /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F74E8AD25E7E6880035DADE /* Model.swift */; };
+		1F74E8B225E811FB0035DADE /* ArticleDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F74E8B125E811FB0035DADE /* ArticleDetailView.swift */; };
+		1F74E8B525E8122B0035DADE /* URLImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F74E8B425E8122B0035DADE /* URLImageView.swift */; };
+		1F74E8B825E813240035DADE /* HTMLStringView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F74E8B725E813240035DADE /* HTMLStringView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +29,9 @@
 		1F74E8A425E775000035DADE /* TabBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarView.swift; sourceTree = "<group>"; };
 		1F74E8AA25E7E52A0035DADE /* MyLocationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyLocationView.swift; sourceTree = "<group>"; };
 		1F74E8AD25E7E6880035DADE /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
+		1F74E8B125E811FB0035DADE /* ArticleDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleDetailView.swift; sourceTree = "<group>"; };
+		1F74E8B425E8122B0035DADE /* URLImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLImageView.swift; sourceTree = "<group>"; };
+		1F74E8B725E813240035DADE /* HTMLStringView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTMLStringView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,6 +72,9 @@
 				1F74E8A425E775000035DADE /* TabBarView.swift */,
 				1F74E8AA25E7E52A0035DADE /* MyLocationView.swift */,
 				1F74E8AD25E7E6880035DADE /* Model.swift */,
+				1F74E8B125E811FB0035DADE /* ArticleDetailView.swift */,
+				1F74E8B425E8122B0035DADE /* URLImageView.swift */,
+				1F74E8B725E813240035DADE /* HTMLStringView.swift */,
 			);
 			path = TabilogIOS;
 			sourceTree = "<group>";
@@ -147,10 +156,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1F74E8B525E8122B0035DADE /* URLImageView.swift in Sources */,
+				1F74E8B225E811FB0035DADE /* ArticleDetailView.swift in Sources */,
 				1F74E8AE25E7E6880035DADE /* Model.swift in Sources */,
 				1F74E89725E76F9A0035DADE /* ContentView.swift in Sources */,
 				1F74E8AB25E7E52A0035DADE /* MyLocationView.swift in Sources */,
 				1F74E8A525E775000035DADE /* TabBarView.swift in Sources */,
+				1F74E8B825E813240035DADE /* HTMLStringView.swift in Sources */,
 				1F74E89525E76F9A0035DADE /* TabilogIOSApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
