@@ -9,7 +9,19 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        TabBarView()
+        NavigationView {
+            TabBarView()
+                .navigationBarTitle(Text("TABILOG"), displayMode: .inline)
+                .navigationBarItems(
+                leading: Image("marker1")
+                    .resizable()
+                    .overlay(
+                        Circle().stroke(Color.gray, lineWidth: 1)
+                    )
+                    .frame(width: 30, height: 30)
+                    .clipShape(Circle())
+                )
+        }
     }
 }
 

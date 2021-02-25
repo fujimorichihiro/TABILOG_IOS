@@ -17,6 +17,7 @@
 		1F74E8B225E811FB0035DADE /* ArticleDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F74E8B125E811FB0035DADE /* ArticleDetailView.swift */; };
 		1F74E8B525E8122B0035DADE /* URLImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F74E8B425E8122B0035DADE /* URLImageView.swift */; };
 		1F74E8B825E813240035DADE /* HTMLStringView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F74E8B725E813240035DADE /* HTMLStringView.swift */; };
+		1F74E8BB25E82AFF0035DADE /* NewArticlesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F74E8BA25E82AFF0035DADE /* NewArticlesView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +33,7 @@
 		1F74E8B125E811FB0035DADE /* ArticleDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleDetailView.swift; sourceTree = "<group>"; };
 		1F74E8B425E8122B0035DADE /* URLImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLImageView.swift; sourceTree = "<group>"; };
 		1F74E8B725E813240035DADE /* HTMLStringView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTMLStringView.swift; sourceTree = "<group>"; };
+		1F74E8BA25E82AFF0035DADE /* NewArticlesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewArticlesView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -75,6 +77,7 @@
 				1F74E8B125E811FB0035DADE /* ArticleDetailView.swift */,
 				1F74E8B425E8122B0035DADE /* URLImageView.swift */,
 				1F74E8B725E813240035DADE /* HTMLStringView.swift */,
+				1F74E8BA25E82AFF0035DADE /* NewArticlesView.swift */,
 			);
 			path = TabilogIOS;
 			sourceTree = "<group>";
@@ -157,6 +160,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1F74E8B525E8122B0035DADE /* URLImageView.swift in Sources */,
+				1F74E8BB25E82AFF0035DADE /* NewArticlesView.swift in Sources */,
 				1F74E8B225E811FB0035DADE /* ArticleDetailView.swift in Sources */,
 				1F74E8AE25E7E6880035DADE /* Model.swift in Sources */,
 				1F74E89725E76F9A0035DADE /* ContentView.swift in Sources */,

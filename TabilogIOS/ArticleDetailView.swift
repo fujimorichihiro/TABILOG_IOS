@@ -18,6 +18,8 @@ struct ArticleDetailView: View {
         )
     var body: some View {
         VStack {
+            Spacer()
+                .frame(height: 10)
             HStack {
                 Spacer()
                     .frame(width: 10)
@@ -25,7 +27,7 @@ struct ArticleDetailView: View {
                     .font(.title2)
                 Spacer()
             }
-            Divider()
+            Divider() //下線
         }
         HStack {
             Spacer()

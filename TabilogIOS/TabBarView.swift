@@ -17,8 +17,8 @@ struct TabBarView: View {
     var body: some View {
         
         TabView {
-            Text("新着記事一覧") //新着記事
-            .tabItem {
+            NewArticlesView() //新着記事
+              .tabItem {
                 Image(systemName: "house")
                     .font(.title)
             }

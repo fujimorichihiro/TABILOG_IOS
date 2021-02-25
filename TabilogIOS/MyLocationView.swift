@@ -39,7 +39,6 @@ struct MyLocationView: View {
                 annotationItems: points,
                 annotationContent: { item in
                     MapAnnotation(coordinate: item.coordinate){
-    //                    NavigationLink(destination: ArticleView(articleDetail: item.article)) {
                         Image(systemName: "mappin.circle.fill")
                             .foregroundColor(.red)
                             .font(.title)
@@ -48,7 +47,6 @@ struct MyLocationView: View {
                                 self.flag = false
                                 withAnimation() { self.flag.toggle() }
                             }
-    //                    }
                     }
                 }
             ).onAppear(perform: updateViewMap)
@@ -79,7 +77,7 @@ struct MyLocationView: View {
         }
     }
     
-    func updateViewMap() {
+    func updateViewMap() { //上から順に処理されるわけではないっぽい？
         // 現在地を取得
         coordinator.getLocation()
         //JSONデータを取得するurlを作成
