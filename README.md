@@ -30,3 +30,12 @@ DMM WEBCAMPで制作したポートフォリオにAPI機能を追加し、①新
 
 
 ![swiftgif3](https://user-images.githubusercontent.com/62407835/109245990-c8ec0980-7824-11eb-9eeb-cb5926d29cd4.gif)
+
+
+
+### 開発環境
+Mac Book Pro
+macOS Catalina 10.15.7
+Xcode 12.4
+Swift 5.3.2
+SwiftUI
