@@ -48,11 +48,6 @@ struct MyLocationView: View {
             ).onAppear(perform: updateViewMap) //下に記述、位置情報などを取得更新する。
             VStack() {
                 Spacer()
-                HStack() {
-                    Button(action: {
-                        updateButton()
-                    }){ Text("Button")}
-                }
                 if flag {
                     NavigationLink(destination: ArticleDetailView(articleDetail: selectedArticle)) {
                         HStack() {
@@ -92,13 +87,7 @@ struct MyLocationView: View {
         }
         
     }
-    //ボタンでviewを更新
-    func updateButton() {
-        for article in surroundingArticles {
-            points.append(PinItem(coordinate: .init(latitude: article.latitude!, longitude: article.longitude!), article: article))
-        }
-        print("完了")
-    }
+
     
     //記事情報を取得する関数
     func loadData(request_url: String) {
