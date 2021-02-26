@@ -39,4 +39,4 @@ macOS Catalina 10.15.7</br>
 Xcode 12.4</br>
 Swift 5.3.2</br>
 SwiftUI</br>
-### 実機でのテストはiphoneXR IOS 14.4を使用しました。
+##### 実機でのテストはiphoneXR IOS 14.4を使用しました。
