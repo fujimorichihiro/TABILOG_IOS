@@ -7,8 +7,8 @@
 
 
 import SwiftUI
-final class URLImageViewModel: ObservableObject {
-    
+class URLImageViewModel: ObservableObject {
+    //ここにデータが格納されるとviewが切り替わる
     @Published var downloadData: Data? = nil
     let url: String
     
@@ -46,6 +46,7 @@ final class URLImageViewModel: ObservableObject {
     }
 }
 
+// View
 struct URLImageView: View {
     @ObservedObject var viewModel: URLImageViewModel
             

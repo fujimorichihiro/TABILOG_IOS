@@ -10,9 +10,9 @@ import SwiftUI
 struct TabBarView: View {
     init() {
         //TabBar非選択時のアイコン色
-        UITabBar.appearance().unselectedItemTintColor = .black
+        UITabBar.appearance().unselectedItemTintColor = .white
         //TabBarの背景色
-        UITabBar.appearance().barTintColor = UIColor.orange
+        UITabBar.appearance().barTintColor = UIColor(red: 240/255, green: 172/255, blue: 14/255, alpha: 1)
     }
     var body: some View {
         
@@ -32,13 +32,8 @@ struct TabBarView: View {
                     Image(systemName: "map")
                         .font(.title)
                 }
-            Text("メール画面")
-                .tabItem {
-                    Image(systemName: "envelope")
-                        .font(.title)
-                }
         }
-        .accentColor(.white)
+        .accentColor(Color(red: 212/255, green: 220/255, blue: 211/255))
     }
 }
 

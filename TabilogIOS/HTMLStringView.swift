@@ -7,8 +7,9 @@
 
 import SwiftUI
 import WebKit
-
+//HTMLデータを表示するためのView
 struct HTMLStringView: UIViewRepresentable {
+    //データを渡す
     let htmlContent: String
 
     func makeUIView(context: Context) -> WKWebView {

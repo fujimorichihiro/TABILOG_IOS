@@ -13,10 +13,9 @@ struct MyLocationView: View {
     
     
     @State private var region = MKCoordinateRegion(
-        center: CLLocationCoordinate2D(latitude: 0, longitude: 0),
+        center: CLLocationCoordinate2D(latitude: 35.7719, longitude: 139.873),
             span: MKCoordinateSpan(latitudeDelta: 0.005, longitudeDelta: 0.005)
     )
-    @State private var trackingMode: MapUserTrackingMode = .follow
     //ピンを入れる空の配列を作成
     @State private var points = [PinItem]()
     //現在地周辺の記事の探索結果を入れる配列
@@ -33,7 +32,6 @@ struct MyLocationView: View {
             Map(
                 coordinateRegion: $region,
                 showsUserLocation: true,
-                userTrackingMode: $trackingMode,
                 annotationItems: points, //ピンの配列を渡す
                 annotationContent: { item in //ピンの形などを指定する
                     MapAnnotation(coordinate: item.coordinate){
@@ -50,6 +48,11 @@ struct MyLocationView: View {
             ).onAppear(perform: updateViewMap) //下に記述、位置情報などを取得更新する。
             VStack() {
                 Spacer()
+                HStack() {
+                    Button(action: {
+                        updateButton()
+                    }){ Text("Button")}
+                }
                 if flag {
                     NavigationLink(destination: ArticleDetailView(articleDetail: selectedArticle)) {
                         HStack() {
@@ -81,14 +84,20 @@ struct MyLocationView: View {
         coordinator.getLocation()
         //JSONデータを取得,surroundingArticlesを更新する。
         loadData(request_url: "https://tabilog.cyou/api/v1/search/by_current_location?latitude=\(coordinator.myLatitude!)&longitude=\(coordinator.myLongitude!)")
-        //ピンを生成する。
+        
+        DispatchQueue.main.async {
+            //mapの中心を更新
+            region.center = CLLocationCoordinate2D(latitude: coordinator.myLatitude!, longitude: coordinator.myLongitude!)
+            
+        }
+        
+    }
+    //ボタンでviewを更新
+    func updateButton() {
         for article in surroundingArticles {
             points.append(PinItem(coordinate: .init(latitude: article.latitude!, longitude: article.longitude!), article: article))
         }
-        
-        //mapの中心を更新
-        region.center = CLLocationCoordinate2D(latitude: coordinator.myLatitude!, longitude: coordinator.myLongitude!)
-        
+        print("完了")
     }
     
     //記事情報を取得する関数
@@ -102,21 +111,19 @@ struct MyLocationView: View {
         URLSession.shared.dataTask(with: request) { data, response, error in
             
              if let data = data {
-                print("************Json Data***************")
-                print(String(data: data, encoding: String.Encoding.utf8) ?? "")
                 let decoder = JSONDecoder()
                 guard let decodedResponse: [Article] = try? decoder.decode([Article].self, from: data) else {
-//                guard let decodedResponse = try? decoder.decode(Response.self, from: data) else {
                     print("Json decode エラー")
                     return
                 }
                 // Viewをアップデート
                 DispatchQueue.main.async {
-                    surroundingArticles = decodedResponse
-                    print("***** 現在地周辺データ確認 *****")
+                    print("Decode完了")
+                    //ピンを生成する。
                     for article in surroundingArticles {
-                        print(article)
+                        points.append(PinItem(coordinate: .init(latitude: article.latitude!, longitude: article.longitude!), article: article))
                     }
+                    surroundingArticles = decodedResponse
                 }
             } else {
                 print("Fetch Failed:")
@@ -133,7 +140,7 @@ struct MyLocationView: View {
             //初期化
             locationManager = CLLocationManager()
             locationManager.requestWhenInUseAuthorization()
-            let status = CLLocationManager.authorizationStatus()
+            let status = CLLocationManager.authorizationStatus() //IOS 14で非推奨なので変えたい****************
             if status == .authorizedWhenInUse {
                 locationManager.delegate = self
                 locationManager.distanceFilter = 10

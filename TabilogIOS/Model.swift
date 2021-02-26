@@ -11,7 +11,7 @@ import CoreLocation
 struct Responce: Codable {
     var articles: [Article] //Articleの配列
 }
-
+//記事情報
 struct Article: Codable {
     var id: Int?
     var title: String?
@@ -22,7 +22,7 @@ struct Article: Codable {
     var longitude: Double?
     var user: User?
 }
-
+//ユーザー情報
 struct User: Codable {
     var name: String?
     var profile_image: Thumb25
@@ -30,7 +30,7 @@ struct User: Codable {
         var thumb_25: Url
     }
 }
-
+//サムネイル
 struct Thumb: Codable {
     var thumb: Url
 }

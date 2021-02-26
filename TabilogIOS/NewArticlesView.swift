@@ -10,17 +10,39 @@ import SwiftUI
 struct NewArticlesView: View {
     @State private var newArticles = [Article]()
     var body: some View {
-        List(newArticles, id: \.id) { article in
-            NavigationLink(destination: ArticleDetailView(articleDetail: article)) {
-                HStack() {
-                    Spacer()
-                        .frame(width: 20)
-                    URLImageView(viewModel: .init(url: "\(article.article_image?.thumb.url ?? "")"))
-                        .scaledToFill()
-                        .frame(width: 100, height: 100)
-                    Spacer()
-                        .frame(width: 50)
-                    Text(article.title ?? "")
+        VStack() {
+            Text("New Articles")
+                .padding()
+                .foregroundColor(.gray)
+            List(newArticles, id: \.id) { article in
+                NavigationLink(destination: ArticleDetailView(articleDetail: article)) {
+                    VStack() {
+                        HStack() { //ユーザー情報部分
+                            URLImageView(viewModel: .init(url: "\(article.user?.profile_image.thumb_25.url ?? "")"))
+                                .scaledToFill()
+                                .frame(width:50, height: 50)
+                                .clipShape(Circle())
+                            Spacer()
+                                .frame(width: 20)
+                            Text(article.user?.name ?? "")
+                                .foregroundColor(.gray)
+                                .offset(y: -10)
+                            Spacer()
+                       }
+                        
+                        HStack() { //記事タイトル
+                            Spacer()
+                                .frame(width: 60)
+                            Text(article.title ?? "")
+                            Spacer()
+                        }
+                        Spacer()
+                            .frame(width: 20)
+                        URLImageView(viewModel: .init(url: "\(article.article_image?.thumb.url ?? "")")) //記事サムネイル部分
+                            .scaledToFill()
+                            .frame(width: 250, height: 200)
+                            .cornerRadius(16)
+                    }
                 }
             }
         }.onAppear(perform: loadNewArticles)
@@ -36,21 +58,14 @@ struct NewArticlesView: View {
         URLSession.shared.dataTask(with: request) { data, response, error in
             
              if let data = data {
-                print("************Json Data***************")
-                print(String(data: data, encoding: String.Encoding.utf8) ?? "")
                 let decoder = JSONDecoder()
                 guard let decodedResponse: [Article] = try? decoder.decode([Article].self, from: data) else {
-//                guard let decodedResponse = try? decoder.decode(Response.self, from: data) else {
                     print("Json decode エラー")
                     return
                 }
                 // Viewをアップデート
                 DispatchQueue.main.async {
                     newArticles = decodedResponse
-                    print("***** 最終データ確認 *****")
-                    for article in newArticles {
-                        print(article)
-                    }
                 }
             } else {
                 print("Fetch Failed:")

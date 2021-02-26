@@ -25,6 +25,7 @@ struct ArticleDetailView: View {
                     .frame(width: 10)
                 Text(articleDetail.title ?? "")
                     .font(.title)
+                    .fontWeight(.thin)
                     .bold()
                     
                 Spacer()
@@ -32,6 +33,8 @@ struct ArticleDetailView: View {
             Rectangle()//下線
                 .frame(height: 4)
                 .foregroundColor(.gray)
+            Spacer()
+                .frame(height: 10)
             HStack() {
                 Spacer()
                     .frame(width: 10)
