@@ -34,8 +34,8 @@ DMM WEBCAMPで制作したポートフォリオにAPI機能を追加し、①新
 
 
 ### 開発環境
-Mac Book Pro
-macOS Catalina 10.15.7
-Xcode 12.4
-Swift 5.3.2
-SwiftUI
+Mac Book Pro</br>
+macOS Catalina 10.15.7</br>
+Xcode 12.4</br>
+Swift 5.3.2</br>
+SwiftUI</br>
